@@ -13,30 +13,34 @@ public class InsertionSort {
 	
 	public void printArr() {
 		for(int i : arr) {
-			System.out.print(arr[i] + " ");
+			System.out.print(i + " ");
 		}
 		System.out.print("\n");
 	}
 	
 	
 	public void IncInsertion() {
-		 int size = arr.length;
-
-		 for (int step = 1; step < size; step++) {
-		   int key = arr[step];
-		   int j = step - 1;
-
-		   // Compare key with each element on the left of it until an element smaller than
-		   // it is found.
-		   // For descending order, change key<array[j] to key>array[j].
-		   while (j >= 0 && key < arr[j]) {
-		     arr[j + 1] = arr[j];
-		     --j;
-		   }
-
-		   // Place key at after the element just smaller than it.
-		   arr[j + 1] = key;
-		 }
+		 for(int i = 1; i < arr.length; i++){
+			 int x = arr[i];
+			 int y = i-1;
+			 	while(y >= 0 && arr[y] > x){
+			 		arr[y+1] = arr[y];
+			 		y--;
+			 	}
+			 	arr[y+1] = x;
+		 	}	
+		}
+	
+	public void DecInsertion() {
+		 for(int i = 1; i < arr.length; i++){
+			 int x = arr[i];
+			 int y = i-1;
+			 	while(y >= 0 && arr[y] < x){
+			 		arr[y+1] = arr[y];
+			 		y--;
+			 	}
+			 	arr[y+1] = x;
+		 	}	
 		}
 	
 	public static void main(String[] args) {
@@ -44,6 +48,8 @@ public class InsertionSort {
 		array.populateArr();
 		array.printArr();
 		array.IncInsertion();
+		array.printArr();
+		array.DecInsertion();
 		array.printArr();
 		
 	}
